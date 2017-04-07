@@ -26,7 +26,9 @@ public class player : MonoBehaviour
 	
 	private void addTatesAndTags ()
     {
-        lookingStateMachine.addState(StateID.looking, GetComponent<Looking>());
-        looking.addTag("Inspectable", StateID.Inspect);
+        lookingStateMachine.addState(StateID.looking, looking);
+
+        lookingStateMachine.addState(StateID.Inspect, GetComponent<Inspect>());
+        looking.addTag(Tags.inspectable, StateID.Inspect);
 	}
 }

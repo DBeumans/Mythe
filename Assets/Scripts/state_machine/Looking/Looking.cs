@@ -13,7 +13,11 @@ public class Looking : State
     private GameObject previousObject;
 
     private bool haveObject = false;
-    private bool buttonClicked = false;
+
+    public GameObject CurrentObject
+    {
+        get { return currentObject; }
+    }
 
     private void Start()
     {
@@ -35,24 +39,18 @@ public class Looking : State
 
         previousObject = currentObject;
     }
-    	
-	public override void Reason ()
-    {
-		if(haveObject && buttonClicked)
-        {
-            if (states.ContainsKey(currentObject.tag))
-                lookStateMachine.setState(states[currentObject.tag]);
-        }
-	}
+    
+	public override void Reason (){}
 
     public override void DoAction()
-    {
-        buttonClicked = true;
-    }
-
-    public override void StopAction()
-    {
-        buttonClicked = false;
+    {        
+        if (haveObject)
+        { 
+            if (states.ContainsKey(currentObject.tag))
+            {
+                lookStateMachine.setState(states[currentObject.tag]);
+            }              
+        }
     }
 
     public void checkObject()
@@ -75,5 +73,11 @@ public class Looking : State
                 haveObject = true;
             }           
         }       
+    }
+
+    public override void Leave()
+    {
+        currentObject.transform.GetChild(0).gameObject.SetActive(false);
+        previousObject = null;
     }
 }
