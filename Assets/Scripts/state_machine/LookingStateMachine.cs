@@ -24,7 +24,7 @@ public class LookingStateMachine : MonoBehaviour
             currentState.DoAction();
     }
 
-    public void stopAcktion()
+    public void stopAction()
     {
         if (currentState != null)
             currentState.StopAction();
