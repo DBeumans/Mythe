@@ -15,17 +15,12 @@ public class MouseInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-                lookStateMachine.doAction();
-        }
-
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            lookStateMachine.stopAction();
+                lookStateMachine.doAction1();
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-
+            lookStateMachine.doAction2();
         }
     }
 }
