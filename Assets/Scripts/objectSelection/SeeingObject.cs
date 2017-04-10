@@ -11,7 +11,7 @@ public class SeeingObject : MonoBehaviour
     private RaycastHit seeing;
     private Ray raydirection;
 
-    public GameObject currentObject()
+    public GameObject getCurrentSeeingObject()
     {
         raydirection = new Ray(transform.position, transform.forward);
         Debug.DrawRay(transform.position, (transform.TransformDirection(Vector3.forward) * 10) , Color.green);
