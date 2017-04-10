@@ -9,11 +9,11 @@ public abstract class State : MonoBehaviour
     {
     }
 
-    public virtual void DoAction()
+    public virtual void DoAction1()
     {
     }
 
-    public virtual void StopAction()
+    public virtual void doAction2()
     {
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Looking : State
 {
     private LookingStateMachine lookStateMachine;
-    private SeeingObject seeingObject;
+    private SeeingObject sight;
     private Dictionary<string, StateID> states = new Dictionary<string, StateID>();
 
     private GameObject currentObject;
@@ -22,7 +22,7 @@ public class Looking : State
     private void Start()
     {
         lookStateMachine = gameObject.GetComponent<LookingStateMachine>();
-        seeingObject = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SeeingObject>();
+        sight = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SeeingObject>();
     }
 
     public void addTag(string str,StateID stateID)
@@ -32,7 +32,7 @@ public class Looking : State
     
 	public override void Act ()
     {
-        currentObject = seeingObject.currentObject();
+        currentObject = sight.getCurrentSeeingObject();
 
         if(currentObject != null || previousObject != null)
             checkObject();
@@ -42,7 +42,7 @@ public class Looking : State
     
 	public override void Reason (){}
 
-    public override void DoAction()
+    public override void DoAction1()
     {        
         if (haveObject)
         { 
@@ -53,7 +53,12 @@ public class Looking : State
         }
     }
 
-    public void checkObject()
+    public override void doAction2()
+    {
+        lookStateMachine.setState(StateID.menu);
+    }
+
+    private void checkObject()
     {
         if (previousObject != null && previousObject != currentObject)
         {
@@ -76,8 +81,10 @@ public class Looking : State
     }
 
     public override void Leave()
-    {
-        currentObject.transform.GetChild(0).gameObject.SetActive(false);
+    {       
         previousObject = null;
+
+        if (currentObject.transform.childCount > 0)
+            currentObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 }
