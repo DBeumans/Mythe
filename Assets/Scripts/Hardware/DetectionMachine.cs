@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VR;
 
-public enum StateID
+public enum CameraID
 {
 	Oculus,
 	Mouse
@@ -13,14 +13,14 @@ public enum StateID
 public class DetectionMachine : MonoBehaviour {
 
 
-	private readonly Dictionary<StateID, HardwareState> cameraStates = new Dictionary<StateID, HardwareState>();
+	private readonly Dictionary<CameraID, HardwareState> cameraStates = new Dictionary<CameraID, HardwareState>();
 
 	private HardwareState currentState;
 
 	void Start()
 	{
-		AddState (StateID.Mouse, GetComponent<CameraMouseMovement> ());
-		AddState (StateID.Oculus, GetComponent<CameraOculusMovement> ());
+		AddState (CameraID.Mouse, GetComponent<CameraMouseMovement> ());
+		AddState (CameraID.Oculus, GetComponent<CameraOculusMovement> ());
 
 		checkHardware ();
 	}
@@ -33,7 +33,7 @@ public class DetectionMachine : MonoBehaviour {
 
 	}
 		
-	public void SetState(StateID stateID) {
+	public void SetState(CameraID stateID) {
 
 		if(!cameraStates.ContainsKey(stateID))
 			return;
@@ -46,7 +46,7 @@ public class DetectionMachine : MonoBehaviour {
 		currentState.Enter();
 	}
 
-	public void AddState(StateID stateID, HardwareState state) {
+	public void AddState(CameraID stateID, HardwareState state) {
 		cameraStates.Add( stateID, state );
 	}
 
@@ -55,9 +55,9 @@ public class DetectionMachine : MonoBehaviour {
 		if (!VRDevice.isPresent) 
 		{
 			// mouse
-			SetState(StateID.Mouse);
+			SetState(CameraID.Mouse);
 			return;
 		}
-		SetState (StateID.Oculus);		
+		SetState (CameraID.Oculus);		
 	}
 }
