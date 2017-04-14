@@ -6,16 +6,9 @@ public class Inventory : MonoBehaviour
 {
 	private Dictionary <Item.ItemType,List<Item>> inventory = new Dictionary<Item.ItemType,List<Item>>();
 
-    private InventoryUI myInventoryUI;
-
     private List<string> itemName = new List<string>();
     public List<string> GetItemNames { get { return itemName; } }
 
-    private void Start()
-    {
-        myInventoryUI = GetComponent<InventoryUI>();
-        
-    }
     public void AddItem (Item item)
 	{
 		if (!inventory.ContainsKey (item.Type))
@@ -36,7 +29,6 @@ public class Inventory : MonoBehaviour
         {
             itemName.Add(items[i].Name);  
         }
-        myInventoryUI.updateUI(items.Count, type.ToString(), itemName);
     }
 
 	public void removeItem(Item.ItemType itemType, string itemName)
