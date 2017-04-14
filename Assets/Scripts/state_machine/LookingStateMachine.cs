@@ -27,7 +27,7 @@ public class LookingStateMachine : MonoBehaviour
     public void doAction2()
     {
         if (currentState != null)
-            currentState.doAction2();
+            currentState.DoAction2();
     }
 
     public void setState(StateID stateID)

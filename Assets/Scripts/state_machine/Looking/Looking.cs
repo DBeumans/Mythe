@@ -43,7 +43,7 @@ public class Looking : State
 	public override void Reason (){}
 
     public override void DoAction1()
-    {        
+    {
         if (haveObject)
         { 
             if (states.ContainsKey(currentObject.tag))
@@ -53,7 +53,7 @@ public class Looking : State
         }
     }
 
-    public override void doAction2()
+    public override void DoAction2()
     {
         lookStateMachine.setState(StateID.menu);
     }
@@ -84,6 +84,7 @@ public class Looking : State
     {       
         previousObject = null;
 
+        if(currentObject != null)
         if (currentObject.transform.childCount > 0)
             currentObject.transform.GetChild(0).gameObject.SetActive(false);
     }

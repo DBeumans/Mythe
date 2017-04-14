@@ -6,6 +6,9 @@ using UnityEngine;
 public class SeeingObject : MonoBehaviour
 {
     [SerializeField]
+    private Material lineMaterial;
+
+    [SerializeField]
     private int viewDistance = 50;
 
     private RaycastHit seeing;
@@ -27,5 +30,21 @@ public class SeeingObject : MonoBehaviour
         }
 
         return null;
+    }
+
+    void OnPostRender()
+    {
+        if(lineMaterial == null)
+        {
+            Debug.LogError("no material given");
+        }
+        else
+        {
+            // Set your materials
+            GL.PushMatrix();
+            lineMaterial.SetPass(1);
+            // Draw your stuff
+            GL.PopMatrix();
+        }      
     }
 }

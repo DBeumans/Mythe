@@ -8,9 +8,9 @@ public class Inspect : State
 {
     private Looking looking;
     private LookingStateMachine lookingStateMachine;
+    private ObjectPlacer placer;
 
     private GameObject inspectingObject;
-    private GameObject parrentObject;
 
     private Vector3 oldPosition;
 
@@ -18,6 +18,7 @@ public class Inspect : State
     {
         looking = GetComponent<Looking>();
         lookingStateMachine = GetComponent<LookingStateMachine>();
+        placer = GetComponent<ObjectPlacer>();
     }
     
     public override void Enter()
@@ -25,7 +26,6 @@ public class Inspect : State
         if(looking.CurrentObject != null)
         {
             inspectingObject = looking.CurrentObject;
-            separateParrent();
             inspectObject();
         }
         else
@@ -37,56 +37,34 @@ public class Inspect : State
 
     public override void DoAction1()
     {
-        if(inspectingObject.tag == Tags.inspectable)
-        {
-            putBack();
-
-            if (parrentObject != null)
-            {
-                putInParrent();
-            }
-
-            setTurnOf();
-        }
-        else if(inspectingObject.tag == Tags.special)
-        {
-
-        }
-
         lookingStateMachine.setState(StateID.looking);
-    }
-
-    private void separateParrent()
-    {
-        if(inspectingObject.transform.parent.gameObject != null)
-        {
-            parrentObject = inspectingObject.transform.parent.gameObject;
-            inspectingObject.transform.parent = null;
-        }
     }
 
     private void inspectObject()
     {
-        GameObject cam = GameObject.FindGameObjectWithTag(Tags.mainCamera);
         oldPosition = inspectingObject.transform.position;
-        inspectingObject.transform.position = cam.transform.position + (cam.transform.forward * 3) ;
+        placer.placeInfrontOfCamera(inspectingObject, 3f);
         setTurnOn();
     }
 
     public override void Leave()
     {
-        inspectingObject = null;
-        parrentObject = null;
-    }
+        if (inspectingObject.tag == Tags.inspectable)
+        {
+            putBack();
+            setTurnOf();
+        }
+        else if (inspectingObject.tag == Tags.special)
+        {
 
-    private void putInParrent()
-    {
-        inspectingObject.transform.parent = parrentObject.transform;
+        }
+
+        inspectingObject = null;
     }
 
     private void putBack()
     {
-        inspectingObject.transform.position = oldPosition;
+        placer.placeBack(inspectingObject,oldPosition);
     }
 
     private void setTurnOn()
