@@ -4,13 +4,12 @@ using System.Collections;
 public class Item
 {
 	private string name;
-	public string Name
-	{
-		get 
-		{
-			return name.ToLower();
-		}
-	}
+	public string Name { get { return name.ToLower (); } }
+
+	private ItemType myType;
+	public ItemType Type { get { return myType; } }
+
+
     public enum ItemType
     {
 		Keys,
@@ -22,11 +21,6 @@ public class Item
 		Air
     };
 
-    private ItemType myType;
-	public ItemType Type
-	{
-		get { return myType; }
-	}
 
 	public Item(string name, ItemType myType)
 	{
