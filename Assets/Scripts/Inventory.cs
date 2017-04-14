@@ -6,29 +6,21 @@ public class Inventory : MonoBehaviour
 {
 	private Dictionary <Item.ItemType,List<Item>> inventory = new Dictionary<Item.ItemType,List<Item>>();
 
-    private List<string> itemName = new List<string>();
-    public List<string> GetItemNames { get { return itemName; } }
-
     public void AddItem (Item item)
 	{
 		if (!inventory.ContainsKey (item.Type))
 		{
 			inventory.Add (item.Type, new List<Item> ());
+			Debug.Log ("Added new type");
 		}
 		inventory[item.Type].Add(item);
         updateValues(item.Type);
+
     }
 
 	public void updateValues(Item.ItemType type)
 	{
-        
-        itemName.Clear();
         List<Item> items = GetAllItemsOfType(type);
-
-        for (int i = 0; i < items.Count; i++)
-        {
-            itemName.Add(items[i].Name);  
-        }
     }
 
 	public void removeItem(Item.ItemType itemType, string itemName)
