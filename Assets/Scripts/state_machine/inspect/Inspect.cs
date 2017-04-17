@@ -42,7 +42,7 @@ public class Inspect : State
         
     }
 
-    public override void DoAction()
+    public override void DoAction1()
     {
         if(inspectingObject.tag == Tags.inspectable)
         {
@@ -76,7 +76,6 @@ public class Inspect : State
     {
         GameObject cam = GameObject.FindGameObjectWithTag(Tags.mainCamera);
         oldPosition = inspectingObject.transform.position;
-        print(GameObject.FindGameObjectWithTag(Tags.mainCamera).transform.forward);
         inspectingObject.transform.position = cam.transform.position + (cam.transform.forward * 3) ;
         setTurnOn();
     }

@@ -6,7 +6,8 @@ using UnityEngine;
 public enum StateID
 {
     looking = 0,
-    Inspect = 1
+    Inspect = 1,
+    menu = 2
 };
 
 public class player : MonoBehaviour
@@ -30,5 +31,7 @@ public class player : MonoBehaviour
 
         lookingStateMachine.addState(StateID.Inspect, GetComponent<Inspect>());
         looking.addTag(Tags.inspectable, StateID.Inspect);
+
+        lookingStateMachine.addState(StateID.menu, GetComponent<MenuNavigation>());
 	}
 }

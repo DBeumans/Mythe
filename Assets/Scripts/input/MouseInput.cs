@@ -6,8 +6,6 @@ public class MouseInput : MonoBehaviour
 {
     private LookingStateMachine lookStateMachine;
 
-    private bool mouse0Clicked = false;
-
     private void Start()
     {
         lookStateMachine = GetComponent<LookingStateMachine>();
@@ -17,16 +15,12 @@ public class MouseInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(mouse0Clicked == false)
-            {
-                lookStateMachine.doAction();
-                mouse0Clicked = true;
-            }
+                lookStateMachine.doAction1();
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            mouse0Clicked = false;
+            lookStateMachine.doAction2();
         }
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class LookingStateMachine : MonoBehaviour
 {
-
     private Dictionary<StateID,State> states = new Dictionary<StateID,State>();
+
     private State currentState;
         	
     void Update ()
@@ -18,16 +18,16 @@ public class LookingStateMachine : MonoBehaviour
         }
 	}
 
-    public void doAction()
+    public void doAction1()
     {
         if (currentState != null)
-            currentState.DoAction();
+            currentState.DoAction1();
     }
 
-    public void stopAcktion()
+    public void doAction2()
     {
         if (currentState != null)
-            currentState.StopAction();
+            currentState.doAction2();
     }
 
     public void setState(StateID stateID)
