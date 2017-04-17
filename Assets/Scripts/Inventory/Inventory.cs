@@ -1,43 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using LitJson;
+using System.IO;
 
 public class Inventory : MonoBehaviour 
 {
-    private Dictionary<Item.ItemType, List<Item>> inventory = new Dictionary<Item.ItemType, List<Item>>();
+    private List<Item> database = new List<Item>();
+    JsonData itemData;
 
-    public void AddItem(Item item)
+    private void Start()
     {
-        if (!inventory.ContainsKey(item.Type))
+        itemData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Items.json"));
+        MakeItemDatabase();
+
+        Debug.Log(FetchItemByID(0).Description);
+    }
+
+    public Item FetchItemByID(int id)
+    {
+        for (int i = 0; i < database.Count; i++)
         {
-            inventory.Add(item.Type, new List<Item>());
+            if (database[i].ID == id)
+                return database[i];
         }
-        inventory[item.Type].Add(item);
-        Debug.Log(inventory[item.Type][0].Name);
-        Debug.Log(inventory[item.Type].Count);
-        //updateValues(item.Type);
+        return null;
     }
 
-    public void updateValues(Item.ItemType type)
+    private void MakeItemDatabase()
     {
-        List<Item> items = GetAllItemsOfType(type);
-    }
-
-    public void removeItem(Item.ItemType itemType, string itemName)
-    {
-        for (int i = 0; i < inventory[itemType].Count; i++)
+        for (int i = 0; i < itemData.Count; i++)
         {
-            if (inventory[itemType][i].Name == itemName)
-            {
-                inventory[itemType].RemoveAt(i);
-                break;
-            }
+            database.Add(new Item((int)itemData[i]["id"], itemData[i]["title"].ToString(), itemData[i]["description"].ToString() , itemData[i]["slug"].ToString() ));
         }
-        updateValues(itemType);
-    }
-
-    public List<Item> GetAllItemsOfType(Item.ItemType type)
-    {
-        return inventory[type];
     }
 }

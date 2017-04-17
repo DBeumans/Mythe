@@ -3,28 +3,23 @@ using System.Collections;
 
 public class Item
 {
-	private string name;
-	public string Name { get { return name.ToLower (); } }
-
-	private ItemType myType;
-	public ItemType Type { get { return myType; } }
-
-
-    public enum ItemType
+    public int ID { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public string Slug { get; set; }
+    public Sprite Sprite { get; set; }
+    
+    public Item(int id, string title , string description, string slug)
     {
-		Keys,
-		Painting,
-		Chair,
-		Table,
-		Door,
-		Lamp,
-		Air
-    };
+        this.ID = id;
+        this.Title = title;
+        this.Description = description;
+        this.Slug = slug;
+        this.Sprite = Resources.Load<Sprite>("Items/Sprites/" + slug);
+    }
 
-
-	public Item(string name)
-	{
-		this.name = name;
-		this.myType = myType;
-	}
+    public Item()
+    {
+        this.ID = -1;
+    }
 }
