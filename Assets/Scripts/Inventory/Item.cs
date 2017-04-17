@@ -22,7 +22,7 @@ public class Item
     };
 
 
-	public Item(string name, ItemType myType)
+	public Item(string name)
 	{
 		this.name = name;
 		this.myType = myType;
