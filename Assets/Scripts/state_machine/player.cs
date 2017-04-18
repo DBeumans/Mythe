@@ -7,7 +7,8 @@ public enum StateID
 {
     looking = 0,
     Inspect = 1,
-    menu = 2
+    menu = 2,
+    puzzle = 3
 };
 
 public class player : MonoBehaviour
@@ -33,5 +34,8 @@ public class player : MonoBehaviour
         looking.addTag(Tags.inspectable, StateID.Inspect);
 
         lookingStateMachine.addState(StateID.menu, GetComponent<MenuNavigation>());
+
+        lookingStateMachine.addState(StateID.puzzle, GetComponent<PuzzleState>());
+        looking.addTag(Tags.puzzle, StateID.puzzle);
 	}
 }

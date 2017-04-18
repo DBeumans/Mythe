@@ -72,7 +72,7 @@ public class Looking : State
         {          
             if (states.ContainsKey(currentObject.tag))
             {
-                if(currentObject.transform.childCount > 0)
+                if(currentObject.transform.childCount > 0 && currentObject.tag != Tags.puzzle)
                     currentObject.transform.GetChild(0).gameObject.SetActive(true);
 
                 haveObject = true;

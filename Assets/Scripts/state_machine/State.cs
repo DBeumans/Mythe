@@ -13,6 +13,10 @@ public abstract class State : MonoBehaviour
     {
     }
 
+    public virtual void StopAction1()
+    {
+    }
+
     public virtual void DoAction2()
     {
     }

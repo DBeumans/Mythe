@@ -10,5 +10,6 @@ public class Tags : MonoBehaviour
     public const string mainCamera = "MainCamera";
     public const string level = "Level";
     public const string menu = "Menu";
+    public const string puzzle = "Puzzle";
     public const string button = "Button";
 }
