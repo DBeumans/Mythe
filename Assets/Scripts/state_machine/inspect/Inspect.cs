@@ -14,11 +14,15 @@ public class Inspect : State
 
     private Vector3 oldPosition;
 
+    private InventoryUI inventoryUI;
+
     private void Start()
     {
         looking = GetComponent<Looking>();
         lookingStateMachine = GetComponent<LookingStateMachine>();
         placer = GetComponent<ObjectPlacer>();
+
+        inventoryUI = GetComponent<InventoryUI>();
     }
     
     public override void Enter()
@@ -27,6 +31,11 @@ public class Inspect : State
         {
             inspectingObject = looking.CurrentObject;
             inspectObject();
+            // NOT WORKING!
+            if(looking.CurrentObject.name.Contains("Item_"))
+            {
+                inventoryUI.AddItem(0);
+            }
         }
         else
         {
