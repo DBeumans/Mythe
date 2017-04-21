@@ -9,19 +9,19 @@ public class Inspect : State
     private Looking looking;
     private LookingStateMachine lookingStateMachine;
     private ObjectPlacer placer;
+    private InventoryUI inventoryUI;
 
     private GameObject inspectingObject;
 
     private Vector3 oldPosition;
 
-    private InventoryUI inventoryUI;
+   
 
     private void Start()
     {
         looking = GetComponent<Looking>();
         lookingStateMachine = GetComponent<LookingStateMachine>();
         placer = GetComponent<ObjectPlacer>();
-
         inventoryUI = GetComponent<InventoryUI>();
     }
     
@@ -30,12 +30,7 @@ public class Inspect : State
         if(looking.CurrentObject != null)
         {
             inspectingObject = looking.CurrentObject;
-            inspectObject();
-            // NOT WORKING!
-            if(looking.CurrentObject.name.Contains("Item_"))
-            {
-                inventoryUI.AddItem(0);
-            }
+            inspectObject();          
         }
         else
         {
@@ -65,7 +60,8 @@ public class Inspect : State
         }
         else if (inspectingObject.tag == Tags.special)
         {
-
+            // NOT WORKING!
+            inventoryUI.AddItem(0);
         }
 
         inspectingObject = null;

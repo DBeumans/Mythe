@@ -21,12 +21,12 @@ public class player : MonoBehaviour
         lookingStateMachine = GetComponent<LookingStateMachine>();
         looking = GetComponent<Looking>();
 
-        addTatesAndTags();
+        addStatesAndTags();
 
         lookingStateMachine.setState(StateID.looking);
     }
 	
-	private void addTatesAndTags ()
+	private void addStatesAndTags ()
     {
         lookingStateMachine.addState(StateID.looking, looking);
 
