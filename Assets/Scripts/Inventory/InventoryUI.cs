@@ -35,7 +35,7 @@ public class InventoryUI : MonoBehaviour {
 
     private void Start()
     {
-        AddItem(0);
+       // AddItem(0);
     }
 
     public void AddItem(int id)
