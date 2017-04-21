@@ -6,21 +6,35 @@ using UnityEngine;
 
 public class MenuNavigation : State
 {
+    private enum ButtenStates
+    {
+        enterButton = 0,
+        onButton = 1,
+        exitButton = 2,
+        ofButton = 3
+
+    }
+
+    private ButtenStates buttonstate;
+
     private LookingStateMachine lookAtateMachine;
     private SeeingObject look;
+    private ObjectPlacer placer;
 
     private GameObject level;
     private GameObject menu;
 
-    private GameObject currentButton, 
-                       previousButton;
+    private GameObject button,previousButton;
+    private VrButton vrButton;
 
     private bool levelState = true;
 
     private void Start()
     {
+        buttonstate = ButtenStates.ofButton;
         lookAtateMachine = GetComponent<LookingStateMachine>();
-        look = GetComponent<SeeingObject>();
+        look = GameObject.FindGameObjectWithTag(Tags.mainCamera).GetComponent<SeeingObject>();
+        placer = GetComponent<ObjectPlacer>();
         getLevel();
         getMenu();
     }
@@ -50,18 +64,14 @@ public class MenuNavigation : State
     public override void Enter()
     {
         levelSwitch();
+        placer.placeInfrontOfCamera(menu, 3f,true,true);
     }
 
     public override void Act()
     {
-        currentButton = look.getCurrentSeeingObject();
-
-        if(currentButton.tag == Tags.button)
-        {
-            setHovering();
-        }
-
-        previousButton = currentButton;
+        button = look.getCurrentSeeingObject();
+        checkButton();
+        previousButton = button;
     }
 
     public override void Reason()
@@ -69,9 +79,43 @@ public class MenuNavigation : State
         
     }
 
-    private void setHovering()
+    private void setHovering(bool hoverState)
     {
+        vrButton.setHover(hoverState);
+    }
 
+    private void checkButton()
+    {
+        switch (buttonstate)
+        {
+            case ButtenStates.ofButton:
+                if(button != null)
+                {
+                    if (button.tag == Tags.button)
+                    {
+                        if (button.GetComponent<VrButton>() != null)
+                        {
+                            vrButton = button.GetComponent<VrButton>();
+                            buttonstate = ButtenStates.enterButton;
+                        }
+                    }
+                }
+                break;
+            case ButtenStates.enterButton:
+                setHovering(true);
+                buttonstate = ButtenStates.onButton;
+                break;
+            case ButtenStates.onButton:
+                if(button != previousButton)
+                {
+                    buttonstate = ButtenStates.exitButton;
+                }
+                break;
+            case ButtenStates.exitButton:
+                setHovering(false);
+                buttonstate = ButtenStates.ofButton;
+                break;
+        }
     }
 
     private void levelSwitch()
@@ -82,11 +126,14 @@ public class MenuNavigation : State
     }
 
     public override void DoAction1()
-    { 
-        
+    {
+        if (buttonstate == ButtenStates.onButton)
+        {
+            vrButton.clicked();
+        }
     }
 
-    public override void doAction2()
+    public override void DoAction2()
     {
         lookAtateMachine.setState(StateID.looking);
     }
