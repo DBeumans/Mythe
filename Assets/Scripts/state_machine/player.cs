@@ -33,6 +33,8 @@ public class player : MonoBehaviour
         lookingStateMachine.addState(StateID.Inspect, GetComponent<Inspect>());
         looking.addTag(Tags.inspectable, StateID.Inspect);
 
+        looking.addTag(Tags.special, StateID.Inspect);
+
         lookingStateMachine.addState(StateID.menu, GetComponent<MenuNavigation>());
 
         lookingStateMachine.addState(StateID.puzzle, GetComponent<PuzzleState>());
