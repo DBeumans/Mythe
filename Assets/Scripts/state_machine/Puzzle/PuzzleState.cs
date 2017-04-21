@@ -8,6 +8,7 @@ public class PuzzleState : State
 {
     private LookingStateMachine lookingStateMachine;
     private Looking looking;
+    private InventoryUI inventoryUI;
 
     private GameObject puzzleObject;
 
@@ -15,6 +16,7 @@ public class PuzzleState : State
     {
         lookingStateMachine = GetComponent<LookingStateMachine>();
         looking = GetComponent<Looking>();
+        inventoryUI = GetComponent<InventoryUI>();
     }
 
     public override void Enter()
