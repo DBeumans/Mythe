@@ -15,7 +15,8 @@ public class Inspect : State
 
     private Vector3 oldPosition;
 
-   
+    [SerializeField]
+    private float inspectDistance = 1.5f;
 
     private void Start()
     {
@@ -47,7 +48,7 @@ public class Inspect : State
     private void inspectObject()
     {
         oldPosition = inspectingObject.transform.position;
-        placer.placeInfrontOfCamera(inspectingObject, 3f);
+        placer.placeInfrontOfCamera(inspectingObject, inspectDistance);
         setTurnOn();
     }
 
