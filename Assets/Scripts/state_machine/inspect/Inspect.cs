@@ -49,6 +49,7 @@ public class Inspect : State
         oldPosition = inspectingObject.transform.position;
         placer.placeInfrontOfCamera(inspectingObject, 3f);
         setTurnOn();
+        inventoryUI.AddItemByName(inspectingObject.name);
     }
 
     public override void Leave()
@@ -58,12 +59,6 @@ public class Inspect : State
             putBack();
             setTurnOf();
         }
-        else if (inspectingObject.tag == Tags.special)
-        {
-            // NOT WORKING!
-            inventoryUI.AddItem(0);
-        }
-
         inspectingObject = null;
     }
 

@@ -51,15 +51,24 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        AddItem(0);
-        AddItem(1);
+        AddItemByID(0);
+        //AddItemByName("key_2");
     }
 
-    public void AddItem(int id)
+    public void AddItemByID(int id)
     {
-        Item itemToAdd = itemDatabase.FetchItemByID(id);
+        Item item = itemDatabase.FetchItemByID(id);
+        loopThroughItems(item);
+    }
+    public void AddItemByName(string name)
+    {
+        Item item = itemDatabase.FetchItemByName(name);
+        loopThroughItems(item);
+    }
 
-        for (int i = 0; i < items.Count - 1; i++)
+    private void loopThroughItems(Item itemToAdd)
+    {
+        for (int i = 0; i < items.Count; i++)
         {
             if (items[i].ID == -1)
             {
@@ -68,10 +77,9 @@ public class InventoryUI : MonoBehaviour
                 itemObject.transform.SetParent(slots[i].transform);
                 itemObject.transform.position = slots[i].transform.position;
                 itemObject.GetComponent<SpriteRenderer>().sprite = itemToAdd.Sprite;
-
+                itemObject.name = itemToAdd.Title;
                 break;
             }
         }
-
     }
 }

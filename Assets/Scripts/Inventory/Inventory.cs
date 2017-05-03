@@ -27,6 +27,16 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
+    public Item FetchItemByName(string name)
+    {
+        for (int i = 0; i < database.Count; i++)
+        {
+            if (database[i].Slug == name)
+                return database[i];
+        }
+        return null;
+    }
+
     private void MakeItemDatabase()
     {
         for (int i = 0; i < itemData.Count; i++)
