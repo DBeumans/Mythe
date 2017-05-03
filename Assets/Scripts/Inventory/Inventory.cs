@@ -9,12 +9,26 @@ public class Inventory : MonoBehaviour
     private List<Item> database = new List<Item>();
     JsonData itemData;
 
-    private void Start()
+    IEnumerator Start()
     {
-        itemData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Items.json"));
-        MakeItemDatabase();
+        string jsonUrl = "";
+        WWW www = new WWW(jsonUrl);
+        yield return www;
 
-        Debug.Log(FetchItemByID(0).Description);
+        if(www.error == null) // no error
+        {
+            ProcessJsonFile(www.data);
+        }
+        else
+        {
+            Debug.LogError("ERROR: " + www.error);
+        }
+    }
+
+    private void ProcessJsonFile(string jsonFile)
+    {
+        itemData = JsonMapper.ToObject(jsonFile);
+        MakeItemDatabase();
     }
 
     public Item FetchItemByID(int id)
