@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
 
     private void ProcessJsonFile(string jsonFile)
     {
-        itemData = JsonMapper.ToObject(jsonFile);
+        itemData = JsonMapper.ToObject(jsonFile); // streaming assets path // http://answers.unity3d.com/questions/935800/read-json-file-data-which-saved-in-server.html
         MakeItemDatabase();
     }
 
