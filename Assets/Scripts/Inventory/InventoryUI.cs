@@ -45,16 +45,28 @@ public class InventoryUI : MonoBehaviour
             slots.Add(itemSlots[i]);
 
         }
-
-
     }
 
-    public void GetItemFromInventory()
+    public Item FetchItemFromInventoryByID(int id)
     {
         for (int i = 0; i < items.Count; i++)
         {
-
+            if(items[i].ID == id)
+                return items[i];
         }
+        return null;
+    }
+    /// <summary>
+    /// Slug means the item name example : key_1.
+    /// </summary>
+    public Item FetchItemFromInventoryBySlug(string slug)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].Slug == slug)
+                return items[i];
+        }
+        return null;
     }
 
     public void AddItemByID(int id)
