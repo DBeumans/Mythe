@@ -2,22 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using LitJson;
-using System.IO;
 
-public class Inventory : MonoBehaviour 
+public class Inventory : MonoBehaviour
 {
     private List<Item> database = new List<Item>();
-    JsonData itemData;
+    private JsonData itemData;
 
     IEnumerator Start()
     {
-        string jsonUrl = "";
+        string jsonUrl = "http://13103.hosts.ma-cloud.nl/Mythe/Items.json";
         WWW www = new WWW(jsonUrl);
         yield return www;
 
-        if(www.error == null) // no error
+        if (www.error == null) // no error
         {
-            ProcessJsonFile(www.data);
+            ProcessJsonFile(www.text);
         }
         else
         {
@@ -27,7 +26,8 @@ public class Inventory : MonoBehaviour
 
     private void ProcessJsonFile(string jsonFile)
     {
-        itemData = JsonMapper.ToObject(jsonFile); // streaming assets path // http://answers.unity3d.com/questions/935800/read-json-file-data-which-saved-in-server.html
+        itemData = JsonMapper.ToObject(jsonFile);
+
         MakeItemDatabase();
     }
 
@@ -57,5 +57,6 @@ public class Inventory : MonoBehaviour
         {
             database.Add(new Item((int)itemData[i]["id"], itemData[i]["title"].ToString(), itemData[i]["description"].ToString() , itemData[i]["slug"].ToString() ));
         }
+        
     }
 }

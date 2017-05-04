@@ -39,7 +39,7 @@ public class InventoryUI : MonoBehaviour
 
         Debug.Log(itemSlots.Count);
 
-        for (int i = 0; i < itemSlots.Count - 1; i++)
+        for (int i = 0; i < itemSlots.Count; i++)
         {
             items.Add(new Item());
             slots.Add(itemSlots[i]);
@@ -49,10 +49,12 @@ public class InventoryUI : MonoBehaviour
 
     }
 
-    private void Start()
+    public void GetItemFromInventory()
     {
-        AddItemByID(0);
-        //AddItemByName("key_2");
+        for (int i = 0; i < items.Count; i++)
+        {
+
+        }
     }
 
     public void AddItemByID(int id)
