@@ -39,27 +39,50 @@ public class InventoryUI : MonoBehaviour
 
         Debug.Log(itemSlots.Count);
 
-        for (int i = 0; i < itemSlots.Count - 1; i++)
+        for (int i = 0; i < itemSlots.Count; i++)
         {
             items.Add(new Item());
             slots.Add(itemSlots[i]);
 
         }
-
-
     }
 
-    private void Start()
+    public Item FetchItemFromInventoryByID(int id)
     {
-        AddItem(0);
-        AddItem(1);
+        for (int i = 0; i < items.Count; i++)
+        {
+            if(items[i].ID == id)
+                return items[i];
+        }
+        return null;
+    }
+    /// <summary>
+    /// Slug means the item name example : key_1.
+    /// </summary>
+    public Item FetchItemFromInventoryBySlug(string slug)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].Slug == slug)
+                return items[i];
+        }
+        return null;
     }
 
-    public void AddItem(int id)
+    public void AddItemByID(int id)
     {
-        Item itemToAdd = itemDatabase.FetchItemByID(id);
+        Item item = itemDatabase.FetchItemByID(id);
+        loopThroughItems(item);
+    }
+    public void AddItemByName(string name)
+    {
+        Item item = itemDatabase.FetchItemByName(name);
+        loopThroughItems(item);
+    }
 
-        for (int i = 0; i < items.Count - 1; i++)
+    private void loopThroughItems(Item itemToAdd)
+    {
+        for (int i = 0; i < items.Count; i++)
         {
             if (items[i].ID == -1)
             {
@@ -68,10 +91,9 @@ public class InventoryUI : MonoBehaviour
                 itemObject.transform.SetParent(slots[i].transform);
                 itemObject.transform.position = slots[i].transform.position;
                 itemObject.GetComponent<SpriteRenderer>().sprite = itemToAdd.Sprite;
-
+                itemObject.name = itemToAdd.Title;
                 break;
             }
         }
-
     }
 }

@@ -2,19 +2,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using LitJson;
-using System.IO;
 
-public class Inventory : MonoBehaviour 
+public class Inventory : MonoBehaviour
 {
     private List<Item> database = new List<Item>();
-    JsonData itemData;
+    private JsonData itemData;
 
-    private void Start()
+    IEnumerator Start()
     {
-        itemData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Items.json"));
-        MakeItemDatabase();
+        string jsonUrl = "http://13103.hosts.ma-cloud.nl/Mythe/Items.json";
+        WWW www = new WWW(jsonUrl);
+        yield return www;
 
-        Debug.Log(FetchItemByID(0).Description);
+        if (www.error == null) // no error
+        {
+            ProcessJsonFile(www.text);
+        }
+        else
+        {
+            Debug.LogError("ERROR: " + www.error);
+        }
+    }
+
+    private void ProcessJsonFile(string jsonFile)
+    {
+        itemData = JsonMapper.ToObject(jsonFile);
+
+        MakeItemDatabase();
     }
 
     public Item FetchItemByID(int id)
@@ -27,11 +41,22 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
+    public Item FetchItemByName(string name)
+    {
+        for (int i = 0; i < database.Count; i++)
+        {
+            if (database[i].Slug == name)
+                return database[i];
+        }
+        return null;
+    }
+
     private void MakeItemDatabase()
     {
         for (int i = 0; i < itemData.Count; i++)
         {
             database.Add(new Item((int)itemData[i]["id"], itemData[i]["title"].ToString(), itemData[i]["description"].ToString() , itemData[i]["slug"].ToString() ));
         }
+        
     }
 }
