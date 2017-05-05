@@ -89,6 +89,8 @@ public class InventoryUI : MonoBehaviour
                 items[i] = itemToAdd;
                 GameObject itemObject = Instantiate(inventoryItem);
                 itemObject.transform.SetParent(slots[i].transform);
+                itemObject.transform.localScale = new Vector3(1, 1, 1);
+                itemObject.transform.localEulerAngles = new Vector3(0, 0, 0);
                 itemObject.transform.position = slots[i].transform.position;
                 itemObject.GetComponent<SpriteRenderer>().sprite = itemToAdd.Sprite;
                 itemObject.name = itemToAdd.Title;
