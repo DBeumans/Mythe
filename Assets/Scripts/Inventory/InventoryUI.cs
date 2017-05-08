@@ -64,6 +64,7 @@ public class InventoryUI : MonoBehaviour
 
         for (int i = 0; i < itemSlots.Count; i++)
         {
+            // Adding a empty item so there will always be a item in the inventory.
             items.Add(new Item());
             slots.Add(itemSlots[i]);
 
@@ -121,15 +122,18 @@ public class InventoryUI : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
+            if(items[i].ID == itemToAdd.ID)
+                break;
+            
             if (items[i].ID == -1)
             {
                 items[i] = itemToAdd;
                 GameObject itemObject = Instantiate(inventoryItem);
                 itemObject.transform.SetParent(slots[i].transform);
                 itemObject.transform.localScale = new Vector3(1, 1, 1);
-                itemObject.transform.localEulerAngles = new Vector3(0, 0, 0);
                 itemObject.transform.position = slots[i].transform.position;
                 itemObject.GetComponent<SpriteRenderer>().sprite = itemToAdd.Sprite;
+                itemObject.transform.localEulerAngles = new Vector3(0, -180, 0);
                 itemObject.name = itemToAdd.Title;
                 break;
             }

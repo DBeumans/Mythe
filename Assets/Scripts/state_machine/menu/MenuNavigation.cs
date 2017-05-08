@@ -29,6 +29,8 @@ public class MenuNavigation : State
 
     private bool levelState = true;
 
+    [SerializeField]private float objectDistance;
+
     private void Start()
     {
         buttonstate = ButtenStates.ofButton;
@@ -64,7 +66,7 @@ public class MenuNavigation : State
     public override void Enter()
     {
         levelSwitch();
-        placer.placeInfrontOfCamera(menu, 3f,true,true);
+        placer.placeInfrontOfCamera(menu, objectDistance,true,true);
     }
 
     public override void Act()
