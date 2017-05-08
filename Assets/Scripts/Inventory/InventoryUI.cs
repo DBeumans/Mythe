@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-
     private Inventory itemDatabase;
 
     [SerializeField]
@@ -17,7 +16,6 @@ public class InventoryUI : MonoBehaviour
     private GameObject inventorySlot;
     [SerializeField]
     private GameObject inventoryItem;
-
 
     private List<Item> items = new List<Item>();
     private List<GameObject> slots = new List<GameObject>();
@@ -35,9 +33,6 @@ public class InventoryUI : MonoBehaviour
         {
             itemSlots.Add(item);
         }
-
-
-        Debug.Log(itemSlots.Count);
 
         for (int i = 0; i < itemSlots.Count; i++)
         {

@@ -10,6 +10,8 @@ public class Inspect : State
     private LookingStateMachine lookingStateMachine;
     private ObjectPlacer placer;
     private InventoryUI inventoryUI;
+    private Inventory inventory;
+    private ItemAudioLogic itemAudioLogic;
 
     private GameObject inspectingObject;
 
@@ -24,6 +26,7 @@ public class Inspect : State
         lookingStateMachine = GetComponent<LookingStateMachine>();
         placer = GetComponent<ObjectPlacer>();
         inventoryUI = GetComponent<InventoryUI>();
+        inventory = GetComponent<Inventory>();
     }
     
     public override void Enter()
@@ -50,6 +53,10 @@ public class Inspect : State
         oldPosition = inspectingObject.transform.position;
         placer.placeInfrontOfCamera(inspectingObject, inspectDistance);
         setTurnOn();
+        itemAudioLogic = inspectingObject.GetComponent<ItemAudioLogic>();
+        itemAudioLogic.PlaySound();
+        if (inventory.FetchItemByName(inspectingObject.name) == null)
+            return;
         inventoryUI.AddItemByName(inspectingObject.name);
     }
 
