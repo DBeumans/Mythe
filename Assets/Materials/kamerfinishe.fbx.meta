@@ -1,0 +1,264 @@
+fileFormatVersion: 2
+guid: 736d920d0b3d55841a74be3b941b0cdb
+timeCreated: 1494058246
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: behang10
+    100002: behang11
+    100004: behang5
+    100006: behang5 1
+    100008: behang6
+    100010: behang8
+    100012: behang8 1
+    100014: behang9
+    100016: behngkras
+    100018: behngkras1
+    100020: behngkras2
+    100022: blodbig
+    100024: blodsmal
+    100026: blodyband
+    100028: blodyband1
+    100030: blodyband2
+    100032: bloodm_mid
+    100034: bloodm_mid1
+    100036: bloodsmall
+    100038: bloodyfing
+    100040: bloodyfing1
+    100042: ceiling2
+    100044: floor
+    100046: houtkrassen
+    100048: //RootNode
+    100050: paneled
+    100052: paneled1
+    100054: paneled2
+    100056: paneled3
+    100058: raam
+    100060: scheurbehng
+    100062: scracthpanel
+    100064: scracthpanel1
+    100066: scracthpanel2
+    100068: scracthpanel3
+    100070: scratch
+    100072: scratchlangpanel
+    100074: scratchlangpanel1
+    400000: behang10
+    400002: behang11
+    400004: behang5
+    400006: behang5 1
+    400008: behang6
+    400010: behang8
+    400012: behang8 1
+    400014: behang9
+    400016: behngkras
+    400018: behngkras1
+    400020: behngkras2
+    400022: blodbig
+    400024: blodsmal
+    400026: blodyband
+    400028: blodyband1
+    400030: blodyband2
+    400032: bloodm_mid
+    400034: bloodm_mid1
+    400036: bloodsmall
+    400038: bloodyfing
+    400040: bloodyfing1
+    400042: ceiling2
+    400044: floor
+    400046: houtkrassen
+    400048: //RootNode
+    400050: paneled
+    400052: paneled1
+    400054: paneled2
+    400056: paneled3
+    400058: raam
+    400060: scheurbehng
+    400062: scracthpanel
+    400064: scracthpanel1
+    400066: scracthpanel2
+    400068: scracthpanel3
+    400070: scratch
+    400072: scratchlangpanel
+    400074: scratchlangpanel1
+    2300000: behang10
+    2300002: behang11
+    2300004: behang5
+    2300006: behang5 1
+    2300008: behang6
+    2300010: behang8
+    2300012: behang8 1
+    2300014: behang9
+    2300016: behngkras
+    2300018: behngkras1
+    2300020: behngkras2
+    2300022: blodbig
+    2300024: blodsmal
+    2300026: blodyband
+    2300028: blodyband1
+    2300030: blodyband2
+    2300032: bloodm_mid
+    2300034: bloodm_mid1
+    2300036: bloodsmall
+    2300038: bloodyfing
+    2300040: bloodyfing1
+    2300042: ceiling2
+    2300044: floor
+    2300046: houtkrassen
+    2300048: paneled
+    2300050: paneled1
+    2300052: paneled2
+    2300054: paneled3
+    2300056: raam
+    2300058: scheurbehng
+    2300060: scracthpanel
+    2300062: scracthpanel1
+    2300064: scracthpanel2
+    2300066: scracthpanel3
+    2300068: scratch
+    2300070: scratchlangpanel
+    2300072: scratchlangpanel1
+    3300000: behang10
+    3300002: behang11
+    3300004: behang5
+    3300006: behang5 1
+    3300008: behang6
+    3300010: behang8
+    3300012: behang8 1
+    3300014: behang9
+    3300016: behngkras
+    3300018: behngkras1
+    3300020: behngkras2
+    3300022: blodbig
+    3300024: blodsmal
+    3300026: blodyband
+    3300028: blodyband1
+    3300030: blodyband2
+    3300032: bloodm_mid
+    3300034: bloodm_mid1
+    3300036: bloodsmall
+    3300038: bloodyfing
+    3300040: bloodyfing1
+    3300042: ceiling2
+    3300044: floor
+    3300046: houtkrassen
+    3300048: paneled
+    3300050: paneled1
+    3300052: paneled2
+    3300054: paneled3
+    3300056: raam
+    3300058: scheurbehng
+    3300060: scracthpanel
+    3300062: scracthpanel1
+    3300064: scracthpanel2
+    3300066: scracthpanel3
+    3300068: scratch
+    3300070: scratchlangpanel
+    3300072: scratchlangpanel1
+    4300000: floor
+    4300002: paneled3
+    4300004: behang10
+    4300006: paneled2
+    4300008: paneled1
+    4300010: paneled
+    4300012: ceiling2
+    4300014: behang8
+    4300016: behang11
+    4300018: behang9
+    4300020: behang5
+    4300022: behang8
+    4300024: behang6
+    4300026: behang5
+    4300028: blodbig
+    4300030: blodsmal
+    4300032: bloodsmall
+    4300034: bloodm_mid
+    4300036: scratch
+    4300038: scheurbehng
+    4300040: blodyband
+    4300042: blodyband1
+    4300044: bloodyfing
+    4300046: bloodyfing1
+    4300048: blodyband2
+    4300050: scracthpanel
+    4300052: scracthpanel1
+    4300054: scracthpanel2
+    4300056: scracthpanel3
+    4300058: scratchlangpanel
+    4300060: scratchlangpanel1
+    4300062: bloodm_mid1
+    4300064: houtkrassen
+    4300066: behngkras
+    4300068: behngkras1
+    4300070: behngkras2
+    4300072: raam
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
