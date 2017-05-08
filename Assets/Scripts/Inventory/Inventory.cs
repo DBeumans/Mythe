@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
         if (www.error == null) // no error
         {
             ProcessJsonFile(www.text);
+            StopCoroutine(Start());
         }
         else
         {

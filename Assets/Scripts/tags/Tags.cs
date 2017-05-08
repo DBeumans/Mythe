@@ -12,4 +12,5 @@ public class Tags : MonoBehaviour
     public const string menu = "Menu";
     public const string puzzle = "Puzzle";
     public const string button = "Button";
+    public const string player = "Player";
 }

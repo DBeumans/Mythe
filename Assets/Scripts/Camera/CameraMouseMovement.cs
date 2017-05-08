@@ -13,7 +13,6 @@ public class CameraMouseMovement : HardwareState {
 	public override void Enter()
 	{
 		myCamera = GetComponent<Camera> ();
-		Debug.Log ("MOUSE");
 	}
 
 	public override void Act()
@@ -21,6 +20,7 @@ public class CameraMouseMovement : HardwareState {
 		xRotation -= Input.GetAxis ("Mouse Y") * lookSensitivity;
 		yRotation += Input.GetAxis ("Mouse X") * lookSensitivity;
 		transform.rotation = Quaternion.Euler (xRotation, yRotation, 0);
+
 	}
 
 	public override void Reason(){
