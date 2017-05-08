@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
+    /// <summary>
+    /// 
+    /// </summary>
     private AudioSource source;
 
     private Dictionary<string, List<AudioClip>> audio_list = new Dictionary<string, List<AudioClip>>();

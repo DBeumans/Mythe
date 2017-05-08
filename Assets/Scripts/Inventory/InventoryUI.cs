@@ -6,22 +6,50 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
+    /// <summary>
+    /// Reference to the Inventroy script.
+    /// </summary>
     private Inventory itemDatabase;
 
+    /// <summary>
+    /// 
+    /// </summary>
     [SerializeField]
     private GameObject inventoryPanel;
+    /// <summary>
+    /// 
+    /// </summary>
     [SerializeField]
     private GameObject slotPanel;
+    /// <summary>
+    /// 
+    /// </summary>
     [SerializeField]
     private GameObject inventorySlot;
+    /// <summary>
+    /// 
+    /// </summary>
     [SerializeField]
     private GameObject inventoryItem;
 
+    /// <summary>
+    /// 
+    /// </summary>
     private List<Item> items = new List<Item>();
+
+    /// <summary>
+    /// 
+    /// </summary>
     private List<GameObject> slots = new List<GameObject>();
 
+    /// <summary>
+    /// 
+    /// </summary>
     private List<GameObject> itemSlots = new List<GameObject>();
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void Awake()
     {
         itemDatabase = GetComponent<Inventory>();
@@ -42,6 +70,9 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public Item FetchItemFromInventoryByID(int id)
     {
         for (int i = 0; i < items.Count; i++)
@@ -64,17 +95,28 @@ public class InventoryUI : MonoBehaviour
         return null;
     }
 
+
+    /// <summary>
+    /// Adds a new item in the inventory by ID.
+    /// </summary>
     public void AddItemByID(int id)
     {
         Item item = itemDatabase.FetchItemByID(id);
         loopThroughItems(item);
     }
+
+    /// <summary>
+    /// Adds a new item in the inventory by Name.
+    /// </summary>
     public void AddItemByName(string name)
     {
         Item item = itemDatabase.FetchItemByName(name);
         loopThroughItems(item);
     }
 
+    /// <summary>
+    /// Loops through the items in the inventory.............
+    /// </summary>
     private void loopThroughItems(Item itemToAdd)
     {
         for (int i = 0; i < items.Count; i++)

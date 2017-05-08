@@ -53,6 +53,7 @@ public class Inspect : State
         oldPosition = inspectingObject.transform.position;
         placer.placeInfrontOfCamera(inspectingObject, inspectDistance);
         setTurnOn();
+
         itemAudioLogic = inspectingObject.GetComponent<ItemAudioLogic>();
         itemAudioLogic.PlaySound();
         if (inventory.FetchItemByName(inspectingObject.name) == null)
