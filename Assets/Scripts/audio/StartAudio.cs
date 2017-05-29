@@ -11,7 +11,8 @@ public class StartAudio : MonoBehaviour {
     private void Start()
     {
         manager = GetComponent<AudioManager>();
-
         manager.PlayAudioInRow(clips);
     }
+
+    
 }

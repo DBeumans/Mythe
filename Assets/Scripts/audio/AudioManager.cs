@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
-        /// <summary>
+    /// <summary>
     /// 
     /// </summary>
     private AudioSource source;
 
     private Dictionary<string, List<AudioClip>> audio_list = new Dictionary<string, List<AudioClip>>();
     public Dictionary<string, List<AudioClip>> AudioList { get { return audio_list; } }
+
+    public delegate void SoundCompletedEvent();
+    public SoundCompletedEvent SoundCompleted;
 
     private void Awake()
     {
@@ -78,22 +81,26 @@ public class AudioManager : MonoBehaviour {
     }
 
     private IEnumerator audioSequence(List<AudioClip>clips)
-    {  
-        while (clips.Count != 0)
+    {
+        AudioClip currClip = clips[0];
+
+        while (clips.Count > 0)
         {
-            AudioClip currClip = clips[0];
-            if (!this.source.isPlaying)
+            if(!source.isPlaying)
             {
                 source.clip = currClip;
                 source.Play();
-                print("Playing: " + currClip.name);
-                
+                clips.RemoveAt(0);
+
+                if (clips.Count > 0)
+                    currClip = clips[0];
+
+                yield return new WaitForSeconds(source.clip.length + 0.5f);
             }
-            print("Done");
-            StartCoroutine(audioSequence(clips));
-            
+           
         }
+        SoundCompleted();
         StopCoroutine(audioSequence(clips));
-        return null;
+        yield return null; 
     }
 }
