@@ -88,8 +88,7 @@ public class AudioManager : MonoBehaviour {
         {
             if(!source.isPlaying)
             {
-                source.clip = currClip;
-                source.Play();
+                PlayAudio(currClip);
                 clips.RemoveAt(0);
 
                 if (clips.Count > 0)
