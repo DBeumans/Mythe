@@ -18,7 +18,7 @@ public class ItemAudioLogic : MonoBehaviour {
 
     public void PlaySound()
     {
-        manager.PlayAudioOneShot((AudioClip)manager.AudioList[audioVoiceCharacter][audioFileInt]);
+        manager.PlayAudio((AudioClip)manager.AudioList[audioVoiceCharacter][audioFileInt]);
         return;
     }
 
