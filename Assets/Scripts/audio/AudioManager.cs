@@ -5,22 +5,34 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour {
 
     /// <summary>
-    /// 
+    /// Reference to the audio source.
     /// </summary>
     private AudioSource source;
 
+    /// <summary>
+    /// Dictionary reference, used to store the audio clips
+    /// </summary>
     private Dictionary<string, List<AudioClip>> audio_list = new Dictionary<string, List<AudioClip>>();
+    /// <summary>
+    /// public get, used to access the dictionary outside this script.
+    /// </summary>
     public Dictionary<string, List<AudioClip>> AudioList { get { return audio_list; } }
 
+    /// <summary>
+    /// public delegate to let other script, if needed , know that the audio in row is done playing.
+    /// </summary>
     public delegate void SoundCompletedEvent();
     public SoundCompletedEvent SoundCompleted;
-
+    
     private void Awake()
     {
         source = GetComponent<AudioSource>();
         constructAudioArray();
     }
 
+    /// <summary>
+    /// Construct the audio files from the resource folder into a dictionary.
+    /// </summary>
     private void constructAudioArray()
     {
         Object[] audioFiles = Resources.LoadAll("Audio/");
@@ -54,6 +66,11 @@ public class AudioManager : MonoBehaviour {
         audioFiles = new Object[0];
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="volume"></param>
     public void PlayAudioOneShot(AudioClip clip, float volume = 1)
     {
         StopAudio(this.source);
@@ -62,6 +79,11 @@ public class AudioManager : MonoBehaviour {
         return;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="volume"></param>
     public void PlayAudio(AudioClip clip , float volume =1)
     {
         source.volume = volume;
@@ -69,17 +91,31 @@ public class AudioManager : MonoBehaviour {
         source.Play();
     }
 
+    /// <summary>
+    /// Plays audio clips in row.
+    /// </summary>
+    /// <param name="clips"></param>
+    /// <param name="volume"></param>
     public void PlayAudioInRow(List<AudioClip> clips, float volume =1)
     {
         source.volume = volume;
         StartCoroutine(audioSequence(clips));
     }
 
+    /// <summary>
+    /// Stops the current audio playing.
+    /// </summary>
+    /// <param name="source"></param>
     public void StopAudio(AudioSource source)
     {
         source.Stop();
     }
-
+    /// <summary>
+    ///  This function lets the clips plays after each other and delete the current playing ( from local array )
+    ///  Call PlayAudioInRow(List<AudioClip> clips, float volume =1) to use this function.
+    /// </summary>
+    /// <param name="clips"></param>
+    /// <returns></returns>
     private IEnumerator audioSequence(List<AudioClip>clips)
     {
         AudioClip currClip = clips[0];
