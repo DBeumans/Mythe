@@ -17,7 +17,7 @@ public class PlayRandomAudio : MonoBehaviour {
     /// <summary>
     /// Speech interval.
     /// </summary>
-    [SerializeField]private float inverval;
+    [SerializeField]private float interval;
 
     private void Start()
     {
@@ -31,8 +31,10 @@ public class PlayRandomAudio : MonoBehaviour {
     {
         if (clips.Count <= 0)
             return;
+        if (interval == 0)
+            interval = 2f;
 
-        StartCoroutine(randomAudio(clips));
+        StartCoroutine(randomAudio());
     }
 
     /// <summary>
@@ -40,7 +42,7 @@ public class PlayRandomAudio : MonoBehaviour {
     /// </summary>
     /// <param name="clips"></param>
     /// <returns></returns>
-    private IEnumerator randomAudio(List<AudioClip>clips)
+    private IEnumerator randomAudio()
     {
         AudioClip currentClip;
         currentClip = clips[Random.Range(0, clips.Count)];
@@ -49,10 +51,10 @@ public class PlayRandomAudio : MonoBehaviour {
         {
             audioManager.PlayAudioOneShot(currentClip);
             currentClip = clips[Random.Range(0, clips.Count)];
-            yield return new WaitForSeconds(currentClip.length + inverval);
+            yield return new WaitForSeconds(currentClip.length + interval);
         }
         // Stopping the coroutine to save performance if by anychance the audioclip list(array) get empty.
-        StopCoroutine(randomAudio(clips));
+        StopCoroutine(randomAudio());
         yield return null;
     }
 
