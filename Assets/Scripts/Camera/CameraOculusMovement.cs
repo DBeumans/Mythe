@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class CameraOculusMovement : HardwareState {
 
+    /// <summary>
+    /// This will run first when this script activates
+    /// </summary>
 	public override void Enter()
 	{
-		Debug.Log ("Oculus");
+		//Debug.Log ("Oculus");
 	}
 
+    /// <summary>
+    /// 
+    /// </summary>
 	public override void Act()
 	{
 	}
 
+    /// <summary>
+    /// 
+    /// </summary>
 	public override void Reason(){
 	}
 }

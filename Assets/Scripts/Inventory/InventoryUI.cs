@@ -12,38 +12,38 @@ public class InventoryUI : MonoBehaviour
     private Inventory itemDatabase;
 
     /// <summary>
-    /// 
+    /// Reference to the inventory panel.
     /// </summary>
     [SerializeField]
     private GameObject inventoryPanel;
     /// <summary>
-    /// 
+    /// Reference to the slot panel.
     /// </summary>
     [SerializeField]
     private GameObject slotPanel;
     /// <summary>
-    /// 
+    /// Reference to the inventory slot.
     /// </summary>
     [SerializeField]
     private GameObject inventorySlot;
     /// <summary>
-    /// 
+    /// Reference to the inventory item.
     /// </summary>
     [SerializeField]
     private GameObject inventoryItem;
 
     /// <summary>
-    /// 
+    /// A list (array) to save the items.
     /// </summary>
     private List<Item> items = new List<Item>();
 
     /// <summary>
-    /// 
+    /// A list (array) to save all the item slots.
     /// </summary>
     private List<GameObject> slots = new List<GameObject>();
 
     /// <summary>
-    /// 
+    /// A list (array) to save all the itemslots.
     /// </summary>
     private List<GameObject> itemSlots = new List<GameObject>();
 
@@ -53,9 +53,6 @@ public class InventoryUI : MonoBehaviour
     private void Awake()
     {
         itemDatabase = GetComponent<Inventory>();
-
-        // itemSlots = GameObject.FindGameObjectsWithTag("ItemSlot");
-
 
         foreach (GameObject item in GameObject.FindGameObjectsWithTag("ItemSlot").OrderBy(name => name.name))
         {
@@ -72,7 +69,7 @@ public class InventoryUI : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Get item from the inventory by item ID
     /// </summary>
     public Item FetchItemFromInventoryByID(int id)
     {
@@ -83,6 +80,7 @@ public class InventoryUI : MonoBehaviour
         }
         return null;
     }
+
     /// <summary>
     /// Slug means the item name example : key_1.
     /// </summary>
@@ -95,7 +93,6 @@ public class InventoryUI : MonoBehaviour
         }
         return null;
     }
-
 
     /// <summary>
     /// Adds a new item in the inventory by ID.

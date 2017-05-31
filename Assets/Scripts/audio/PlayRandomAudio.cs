@@ -32,7 +32,7 @@ public class PlayRandomAudio : MonoBehaviour {
         if (clips.Count <= 0)
             return;
         if (interval == 0)
-            interval = 2f;
+            interval = 10f;
 
         StartCoroutine(randomAudio());
     }

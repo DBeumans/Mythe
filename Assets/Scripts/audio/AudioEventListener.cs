@@ -43,6 +43,9 @@ public class AudioEventListener : MonoBehaviour {
         screenFader.ScreenFadeOut();
     }
 
+    /// <summary>
+    /// Starts the random audio.
+    /// </summary>
     private void playRandomAudio()
     {
         if (audioManager.SoundCompleted == null)
