@@ -11,7 +11,7 @@ public class ItemAudioLogic : MonoBehaviour {
     /// <summary>
     /// Reference to the SeeingObject script.
     /// </summary>
-    private SeeingObject seeingObject;
+    //private SeeingObject seeingObject;
 
     /// <summary>
     /// 
@@ -34,7 +34,7 @@ public class ItemAudioLogic : MonoBehaviour {
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<AudioManager>();
-        seeingObject = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SeeingObject>();
+        //seeingObject = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SeeingObject>();
     }
 
     /// <summary>
@@ -44,18 +44,5 @@ public class ItemAudioLogic : MonoBehaviour {
     {
         manager.PlayAudio((AudioClip)manager.AudioList[audioVoiceCharacter][audioFileInt]);
         return;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerEnter(Collider other)
-    {
-        if(trigger)
-        {
-            PlaySound();
-            return;
-        }
     }
 }

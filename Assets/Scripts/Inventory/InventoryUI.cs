@@ -113,7 +113,8 @@ public class InventoryUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Loops through the items in the inventory.............
+    /// Loops through the items in the inventory and replace the invisable item to item that needs to be added
+    /// Also stops when the item to add is already in the inventory.
     /// </summary>
     private void loopThroughItems(Item itemToAdd)
     {

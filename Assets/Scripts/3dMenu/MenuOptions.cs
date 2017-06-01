@@ -2,12 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuOptions : MonoBehaviour
 {
     public void goToMainMenu()
     {
-        Application.LoadLevel(0);
+        //This gives the obselete warning
+        //Application.LoadLevel(0);
+
+        //Unity have a new way for doing this :
+        SceneManager.LoadScene(0);
     }
 
 

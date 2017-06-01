@@ -5,11 +5,6 @@ using UnityEngine;
 public class CameraMouseMovement : HardwareState {
 
     /// <summary>
-    /// Reference to the Camera component.
-    /// </summary>
-	private Camera myCamera;
-
-    /// <summary>
     /// Mouse sensitivity speed.
     /// </summary>
 	private float lookSensitivity = 5;
@@ -34,7 +29,6 @@ public class CameraMouseMovement : HardwareState {
     /// </summary>
 	public override void Enter()
 	{
-		myCamera = GetComponent<Camera> ();
 	}
 
     /// <summary>
