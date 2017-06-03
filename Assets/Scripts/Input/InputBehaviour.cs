@@ -36,12 +36,12 @@ public class InputBehaviour : MonoBehaviour {
     /// <summary>
     /// Boolean for the Xbox Y button state.
     /// </summary>
-    private bool controller_y;
+    private bool controller_b;
 
     /// <summary>
     /// Getter for the Xbox Y button state, use this to check if Xbox y is pressed.
     /// </summary>
-    public bool GetController_y { get { return controller_y; } }
+    public bool GetController_b { get { return controller_b; } }
 
     /// <summary>
     /// Boolean for the spacebar state.
@@ -81,7 +81,7 @@ public class InputBehaviour : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    private KeyCode keycodeController_y;
+    private KeyCode keycodeController_b;
 
     /// <summary>
     /// 
@@ -102,7 +102,7 @@ public class InputBehaviour : MonoBehaviour {
 		keycodeMouseRight = KeyCode.Mouse1;
 
         keycodeController_x = KeyCode.Joystick1Button2;
-        keycodeController_y = KeyCode.Joystick1Button3;
+        keycodeController_b = KeyCode.Joystick1Button1;
 
         keycodeSpacebar = KeyCode.Space;
         keycodeF = KeyCode.F;
@@ -111,7 +111,7 @@ public class InputBehaviour : MonoBehaviour {
 		mouseRight = Input.GetKeyDown (keycodeMouseRight);
 
         controller_x = Input.GetKeyDown(keycodeController_x);
-        controller_y = Input.GetKeyDown(keycodeController_y);
+        controller_b = Input.GetKeyDown(keycodeController_b);
 
         keySpace = Input.GetKey(keycodeSpacebar);
         keyF = Input.GetKey(keycodeF);

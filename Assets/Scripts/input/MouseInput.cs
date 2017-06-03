@@ -24,7 +24,7 @@ public class MouseInput : MonoBehaviour
                 lookStateMachine.doAction1();
         }
 
-        if (input.GetController_y || input.GetMouseRight)
+        if (input.GetController_b || input.GetMouseRight)
         {
             lookStateMachine.doAction2();
         }

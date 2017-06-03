@@ -16,19 +16,18 @@ public class ScreenFader : MonoBehaviour {
     [SerializeField]private Image _image;
 
     /// <summary>
-    /// To test the game faster so you wont have to wait for the screen fade out.
+    /// Start fadeout at the start when something loads.
     /// </summary>
-    [SerializeField]private bool debugMode = false;
+    [SerializeField]private bool startFade = false;
 
     /// <summary>
     /// 
     /// </summary>
     private void Start()
     {
-        if(debugMode)
-        {
+        if (startFade)
             ScreenFadeOut();
-        }
+
     }
 
     /// <summary>

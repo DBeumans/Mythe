@@ -21,7 +21,7 @@ public class PlayRandomAudio : MonoBehaviour {
 
     private void Start()
     {
-        audioManager = GetComponent<AudioManager>();
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     /// <summary>
