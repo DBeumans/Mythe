@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c3f6d253dd23c5545ba78142de0d97ab
-timeCreated: 1494285071
+timeCreated: 1496503919
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -41,7 +41,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 150
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -90,9 +90,9 @@ TextureImporter:
       name: instructionPlaceholder_0
       rect:
         serializedVersion: 2
-        x: 63
+        x: 0
         y: 441
-        width: 727
+        width: 1182
         height: 639
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

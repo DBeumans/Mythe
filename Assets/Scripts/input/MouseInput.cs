@@ -6,19 +6,25 @@ public class MouseInput : MonoBehaviour
 {
     private LookingStateMachine lookStateMachine;
 
+    private InputBehaviour input;
+
     private void Start()
     {
         lookStateMachine = GetComponent<LookingStateMachine>();
+        input = GetComponent<InputBehaviour>();
+
+        if (input == null)
+            Debug.LogError("No Inputbehaviour script attached to the player!");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (input.GetController_x || input.GetMouseLeft)
         {
                 lookStateMachine.doAction1();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (input.GetController_b || input.GetMouseRight)
         {
             lookStateMachine.doAction2();
         }

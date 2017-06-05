@@ -8,6 +8,10 @@ public class AudioManager : MonoBehaviour {
     /// Reference to the audio source.
     /// </summary>
     private AudioSource source;
+    /// <summary>
+    /// Getter for AudioSource so other script can use it.
+    /// </summary>
+    public AudioSource Source { get { return source; } }
 
     /// <summary>
     /// Dictionary reference, used to store the audio clips
@@ -67,20 +71,18 @@ public class AudioManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Plays audio once, does not stop when other audio files are playing.
     /// </summary>
     /// <param name="clip"></param>
     /// <param name="volume"></param>
     public void PlayAudioOneShot(AudioClip clip, float volume = 1)
     {
-        StopAudio(this.source);
         source.volume = volume;
         source.PlayOneShot(clip);
-        return;
     }
 
     /// <summary>
-    /// 
+    /// Plays audio but stop the current audio playing.
     /// </summary>
     /// <param name="clip"></param>
     /// <param name="volume"></param>
@@ -132,7 +134,6 @@ public class AudioManager : MonoBehaviour {
 
                 yield return new WaitForSeconds(source.clip.length + 0.5f);
             }
-           
         }
         SoundCompleted();
         StopCoroutine(audioSequence(clips));
