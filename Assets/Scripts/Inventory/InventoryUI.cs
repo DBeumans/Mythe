@@ -41,11 +41,15 @@ public class InventoryUI : MonoBehaviour
     /// A list (array) to save all the item slots.
     /// </summary>
     private List<GameObject> slots = new List<GameObject>();
+    public List<GameObject> GetItemSlots { get { return slots; } }
 
     /// <summary>
     /// A list (array) to save all the itemslots.
     /// </summary>
     private List<GameObject> itemSlots = new List<GameObject>();
+
+    public delegate void InventoryStatusEvent();
+    public InventoryStatusEvent InventoryStatus;
 
     /// <summary>
     /// 
@@ -120,10 +124,10 @@ public class InventoryUI : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            if(items[i].ID == itemToAdd.ID)
+            if(items[i].ID == itemToAdd.ID) // dont add if its the same item.
                 break;
             
-            if (items[i].ID == -1)
+            if (items[i].ID == -1) // if the item does not exist in the inventory, add it.
             {
                 items[i] = itemToAdd;
                 GameObject itemObject = Instantiate(inventoryItem);
@@ -133,8 +137,10 @@ public class InventoryUI : MonoBehaviour
                 itemObject.GetComponent<SpriteRenderer>().sprite = itemToAdd.Sprite;
                 itemObject.transform.localEulerAngles = new Vector3(0, -180, 0);
                 itemObject.name = itemToAdd.Title;
+                InventoryStatus();
                 break;
             }
+            // if the inventory is full, launch a delegate event.
         }
     }
 }

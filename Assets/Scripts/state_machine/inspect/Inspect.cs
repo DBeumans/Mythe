@@ -20,6 +20,12 @@ public class Inspect : State
     [SerializeField]
     private float inspectDistance = 1.5f;
 
+    /// <summary>
+    /// Delegate so other script(s) can manupilate specific object(s) to do something else.
+    /// </summary>
+    public delegate void InspectingObjectEventHandler(GameObject obj);
+    public InspectingObjectEventHandler InspectingObjectEvent;
+
     private void Start()
     {
         looking = GetComponent<Looking>();
@@ -50,6 +56,7 @@ public class Inspect : State
 
     private void inspectObject()
     {
+        InspectingObjectEvent(inspectingObject);
         oldPosition = inspectingObject.transform.position;
         placer.placeInfrontOfCamera(inspectingObject, inspectDistance);
         setTurnOn();

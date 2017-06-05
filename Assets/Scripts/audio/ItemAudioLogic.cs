@@ -42,7 +42,7 @@ public class ItemAudioLogic : MonoBehaviour {
     /// </summary>
     public void PlaySound()
     {
-        manager.PlayAudio((AudioClip)manager.AudioList[audioVoiceCharacter][audioFileInt]);
+        manager.PlayAudio((AudioClip)manager.AudioList[audioVoiceCharacter][audioFileInt], .65f);
         return;
     }
 }
