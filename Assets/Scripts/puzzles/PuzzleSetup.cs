@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Brian Boersen
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +23,6 @@ public class PuzzleSetup : MonoBehaviour
 	
 	void addPuzzles ()
     {
-        //puzzleStateMachine.addState(PuzzleID.paintingPuzzle, );
+        puzzleStateMachine.addState(PuzzleID.paintingPuzzle, gameObject.GetComponent<PaintingPuzzle>());
 	}
 }

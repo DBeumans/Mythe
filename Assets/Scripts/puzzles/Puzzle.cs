@@ -7,13 +7,17 @@ public abstract class Puzzle : MonoBehaviour
 {
     public virtual void Enter()
     {
+
     }
 
-    public virtual bool addPuzzlePiece(GameObject puzllePiece, GameObject puzzlePlace)
+    public virtual void addPuzzlePiece(GameObject puzllePiece, GameObject puzzlePlace)
     {
-        bool vallidPuzzlePiece = false;
 
-        return vallidPuzzlePiece;
+    }
+
+    public virtual bool goodPuzzlePiece()
+    {
+        return false;
     }
 
     public virtual void getPuzzlePiece(GameObject puzllePiece,GameObject puzzlePlace)
@@ -23,5 +27,6 @@ public abstract class Puzzle : MonoBehaviour
 
     public virtual void Leave()
     {
+
     }
 }

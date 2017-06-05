@@ -25,6 +25,11 @@ public class Looking : State
         sight = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SeeingObject>();
     }
 
+    public override void Enter()
+    {
+        previousObject = currentObject;
+    }
+
     public void addTag(string str,StateID stateID)
     {
         states.Add(str, stateID);

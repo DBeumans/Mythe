@@ -56,18 +56,25 @@ public class Inspect : State
 
         itemAudioLogic = inspectingObject.GetComponent<ItemAudioLogic>();
         itemAudioLogic.PlaySound();
+
         if (inventory.FetchItemByName(inspectingObject.name) == null)
             return;
+
         inventoryUI.AddItemByName(inspectingObject.name);
     }
 
     public override void Leave()
     {
-        if (inspectingObject.tag == Tags.inspectable)
+        if (inventory.FetchItemByName(inspectingObject.name) != null)
+        {
+            Destroy(inspectingObject);
+        }
+        else if (inspectingObject.tag == Tags.inspectable)
         {
             putBack();
             setTurnOf();
         }
+
         inspectingObject = null;
     }
 

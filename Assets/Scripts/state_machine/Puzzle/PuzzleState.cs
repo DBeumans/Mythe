@@ -12,8 +12,16 @@ public class PuzzleState : State
 
     private GameObject puzzleObject;
 
+    [SerializeField]
+    private GameObject puzzleMenu;
+
     private void Start()
     {
+        if(puzzleMenu == null)
+        {
+            Debug.LogError("no puzzle menu atached");
+        }
+
         lookingStateMachine = GetComponent<LookingStateMachine>();
         looking = GetComponent<Looking>();
         inventoryUI = GetComponent<InventoryUI>();
