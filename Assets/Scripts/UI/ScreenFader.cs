@@ -20,6 +20,9 @@ public class ScreenFader : MonoBehaviour {
     /// </summary>
     [SerializeField]private bool startFade = false;
 
+    public delegate void FadeInStatusEvent();
+    public FadeInStatusEvent FadeInStatus;
+
     /// <summary>
     /// 
     /// </summary>
@@ -43,7 +46,8 @@ public class ScreenFader : MonoBehaviour {
     /// </summary>
     public void ScreenFadeIn()
     {
-        _image.CrossFadeAlpha(1.0f, _amountTofill, true);
+        _image.CrossFadeAlpha(1.0f, _amountTofill/2, true);
+        FadeInStatus();
     }
 }
 

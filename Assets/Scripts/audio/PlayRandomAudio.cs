@@ -43,14 +43,14 @@ public class PlayRandomAudio : MonoBehaviour {
     /// <param name="clips"></param>
     /// <returns></returns>
     private IEnumerator randomAudio()
-    {
+    { 
         AudioClip currentClip;
-        currentClip = clips[Random.Range(0, clips.Count)];
-
-        while(clips.Count > 0)
+        currentClip = clips[0];
+        yield return new WaitForSeconds(1f);
+        while (clips.Count > 0)
         {
             audioManager.PlayAudioOneShot(currentClip);
-            currentClip = clips[Random.Range(0, clips.Count)];
+            currentClip = clips[Random.Range(1, clips.Count)];   
             yield return new WaitForSeconds(currentClip.length + interval);
         }
         // Stopping the coroutine to save performance if by anychance the audioclip list(array) get empty.

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * this script starts the begin audio ( voices )
+ */
 public class StartAudio : MonoBehaviour {
 
     /// <summary>
