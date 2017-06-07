@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MouseInput : MonoBehaviour
 {
     private LookingStateMachine lookStateMachine;
 
     private InputBehaviour input;
+
+    private int sceneIndex;
 
     private void Start()
     {
@@ -15,6 +18,10 @@ public class MouseInput : MonoBehaviour
 
         if (input == null)
             Debug.LogError("No Inputbehaviour script attached to the player!");
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        sceneIndex = currentScene.buildIndex;
+
     }
 
     private void Update()
@@ -26,7 +33,8 @@ public class MouseInput : MonoBehaviour
 
         if (input.GetController_b || input.GetMouseRight)
         {
-            lookStateMachine.doAction2();
+            if(sceneIndex != 0) 
+                lookStateMachine.doAction2();
         }
     }
 }

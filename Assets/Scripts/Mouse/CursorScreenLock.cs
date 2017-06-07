@@ -15,6 +15,8 @@ public class CursorScreenLock : MonoBehaviour {
     private void Start()
     {
         input = GameObject.FindObjectOfType<InputBehaviour>();
+
+        SetCursorState(CursorLockMode.Locked);
     }
 
     /// <summary>
