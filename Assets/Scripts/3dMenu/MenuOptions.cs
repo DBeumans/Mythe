@@ -15,6 +15,12 @@ public class MenuOptions : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void restartGame()
+    {
+        Scene currScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currScene.buildIndex);
+    }
+
 
 
 }
