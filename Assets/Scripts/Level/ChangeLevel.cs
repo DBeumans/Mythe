@@ -5,9 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class ChangeLevel : MonoBehaviour {
 
-    public void SwitchLevel(int index)
+    private ScreenFader fader;
+
+    private int sceneIndex;
+
+    private void Start()
     {
-        SceneManager.LoadScene(index);
+        fader = GetComponent<ScreenFader>();
+        fader.FadeInStatus += switchLevel;
+    }
+    public void startLevelSwitch(int _sceneIndex)
+    {
+        sceneIndex = _sceneIndex;
+        fader.ScreenFadeIn();
+    }
+
+    private void switchLevel()
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void QuitGame()
